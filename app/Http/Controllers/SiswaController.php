@@ -44,6 +44,7 @@ class SiswaController extends Controller
 
     public function update(Request $request, $id)
     {
+        // dd($request->all());
         DB::table('siswa')->where('nisn' , $id)->update([
             'nis' => $request->nis,
             'nama' => $request->nama,
