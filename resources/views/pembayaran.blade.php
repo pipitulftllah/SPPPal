@@ -4,7 +4,8 @@
 
 
 <br>
-<br>
+
+<a href="/pembayaran/create"class="btn btn-success">+ Add New Data</a>
 <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
@@ -25,6 +26,7 @@
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">tahun_dibayar</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id_spp</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">jumlah_bayar</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -55,6 +57,10 @@
                             <td class="align-middle text-center text-sm">
                                 <span class="text-sm font-weight-bold mb-0">{{ $get->jumlah_bayar }}</span>
                             </td>
+                            <td>
+                                <a href="/pembayaran/edit/{{ $get->id_pembayaran}}"class="btn btn-info">Update</a>
+                                <a href="/pembayaran/delete/{{ $get->id_pembayaran}}"class="btn btn-danger">Delete</a>
+                               </td>
                         </tr>
                     @endforeach
                   </tbody>

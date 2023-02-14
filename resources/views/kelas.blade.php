@@ -4,7 +4,8 @@
 
 
 <br>
-<br>
+
+<a href="/kelas/create"class="btn btn-success">+ Add New Data</a>
 <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
@@ -20,6 +21,7 @@
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id_kelas</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">nama_kelas</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id_kk</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -35,6 +37,10 @@
                             <td class="align-middle text-center text-sm">
                                 <span class="text-sm font-weight-bold mb-0">{{ $get->id_kk }}</span>
                             </td>
+                            <td>
+                                <a href="/kelas/edit/{{ $get->id_kelas}}"class="btn btn-info">Update</a>
+                                <a href="/kelas/delete/{{ $get->id_kelas}}"class="btn btn-danger">Delete</a>
+                               </td>
                         </tr>
                     @endforeach
                   </tbody>

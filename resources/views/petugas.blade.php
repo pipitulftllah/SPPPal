@@ -4,7 +4,8 @@
 
 
 <br>
-<br>
+
+<a href="/petugas/create"class="btn btn-success">+ Add New Data</a>
 <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
@@ -20,7 +21,7 @@
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id_petugas</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">nama_petugas</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id_login</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">image</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -36,9 +37,10 @@
                             <td class="align-middle text-center text-sm">
                                 <span class="text-sm font-weight-bold mb-0">{{ $get->id_login }}</span>
                             </td>
-                            <td class="align-middle text-center text-sm">
-                                <span class="text-sm font-weight-bold mb-0">{{ $get->image }}</span>
-                            </td>
+                            <td>
+                                <a href="/petugas/edit/{{ $get->id_petugas}}"class="btn btn-info">Update</a>
+                                <a href="/petugas/delete/{{ $get->id_petugas}}"class="btn btn-danger">Delete</a>
+                               </td>
                         </tr>
                     @endforeach
                   </tbody>

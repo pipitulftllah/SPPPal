@@ -33,12 +33,13 @@ class SppController extends Controller
 
     public function edit(Request $request, $id)
     {
-        return view('edit-spp');
+        return view('edit-spp',['id'=>$id]);
     }
 
 
     public function update(Request $request, $id)
     {
+        // dd($request->all());
         DB::table('spp')->where('id_spp' , $id)->update([
             'tahun' => $request->tahun,
             'nominal' => $request->nominal,

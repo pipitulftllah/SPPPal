@@ -4,7 +4,7 @@
 
 <br>
 
-<a href="/edit"class="btn btn-success">+ Add New Data</a>
+<a href="/spp/create"class="btn btn-success">+ Add New Data</a>
 <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
@@ -20,6 +20,7 @@
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id_spp</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">tahun</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">nominal</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">aksi</th>
                     </tr>
                   </thead>
                   <tbody>
