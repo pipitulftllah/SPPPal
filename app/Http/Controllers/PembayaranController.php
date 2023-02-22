@@ -37,22 +37,25 @@ class PembayaranController extends Controller
 
 
     public function edit(Request $request, $id)
-    {
-        return view('edit-pembayaran',['id'=>$id]);
+    {   $pembayaran = DB::table('pembayaran')->where('id_pembayaran',$id)->first();
+        return view('edit-pembayaran',['id'=>$id,
+        'pembayaran' => $pembayaran
+    ]);
     }
+
 
 
     public function update(Request $request, $id)
     {
         // dd($request->all());
-        DB::table('pembayaran')->where('nisn' , $id)->update([
-            'nis' => $request->nis,
-            'nama' => $request->nama,
-            'id_kelas' => $request->id_kelas,
-            'alamat' => $request->alamat,
-            'no_telp' => $request->no_telp,
+        DB::table('pembayaran')->where('id_pembayaran' , $id)->update([
+            'id_petugas' => $request->id_petugas,
+            'nisn' => $request->nisn,
+            'tgl_bayar' => $request->tgl_bayar,
+            'bulan_dibayar' => $request->bulan_dibayar,
+            'tahun_dibayar' => $request->tahun_dibayar,
             'id_spp' => $request->id_spp,
-            'id_login' => $request->id_login,
+            'jumlah_bayar' => $request->jumlah_bayar,
         ]);
         return redirect('/pembayaran');
     }

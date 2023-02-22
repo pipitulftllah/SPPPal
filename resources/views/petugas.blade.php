@@ -19,7 +19,10 @@
                   <thead>
                     <tr>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id_petugas</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">username</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">password</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">nama_petugas</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">level</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id_login</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">aksi</th>
                     </tr>
@@ -32,7 +35,16 @@
                                 <span class="text-sm font-weight-bold mb-0">{{ $get->id_petugas }}</span>
                             </td>
                             <td class="align-middle text-center text-sm">
+                                <span class="text-sm font-weight-bold mb-0">{{ $get->username }}</span>
+                            </td>
+                            <td class="align-middle text-center text-sm">
+                                <span class="text-sm font-weight-bold mb-0">{{ $get->password }}</span>
+                            </td>
+                            <td class="align-middle text-center text-sm">
                                 <span class="text-sm font-weight-bold mb-0">{{ $get->nama_petugas }}</span>
+                            </td>
+                            <td class="align-middle text-center text-sm">
+                                <span class="text-sm font-weight-bold mb-0">{{ $get->level }}</span>
                             </td>
                             <td class="align-middle text-center text-sm">
                                 <span class="text-sm font-weight-bold mb-0">{{ $get->id_login }}</span>

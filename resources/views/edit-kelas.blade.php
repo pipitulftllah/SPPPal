@@ -10,15 +10,17 @@
                     @csrf
 
                         <div class="form-group">
-                            <input type="text" id="nama" name="nama_kelas" class="form-control" placeholder="nama_kelas">
+                        <label for="exampleInputEmail1" class="form-label">Nama Kelas</label>
+                            <input type="text" id="nama" name="nama_kelas" class="form-control" placeholder="nama_kelas" value="{{ $kelas->nama_kelas }}">
                         </div>
 
                         <div class="form-group">
-                            <input type="text" id="nama" name="id_kk" class="form-control" placeholder="id_kk">
+                        <label for="exampleInputEmail1" class="form-label">Kompetensi Keahlian</label>
+                            <input type="text" id="nama" name="kompetensi_keahlian" class="form-control" placeholder="kompetensi_keahlian" value="{{ $kelas->kompetensi_keahlian }}">
 
                         </div>
 
-                        <button type="submit" class="btn btn-warning">Submit</button>
+                        <button type="submit" class="btn btn-success">Update</button>
                         </div>
                         </div>
                     </form>

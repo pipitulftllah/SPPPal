@@ -10,15 +10,16 @@
                     @csrf
 
                         <div class="form-group">
-                            <input type="text" id="nama" name="tahun" class="form-control" placeholder="tahun">
+                        <label for="exampleInputEmail1" class="form-label">Tahun</label>
+                            <input type="text" id="nama" name="tahun" class="form-control" placeholder="tahun" value="{{ $spp->tahun }}">
                         </div>
 
                         <div class="form-group">
-                            <input type="text" id="nama" name="nominal" class="form-control" placeholder="nominal">
-
+                        <label for="exampleInputEmail1" class="form-label">Nominal</label>
+                            <input type="text" id="nama" name="nominal" class="form-control" placeholder="nominal" value="{{ $spp->nominal }}">
                         </div>
 
-                        <button type="submit" class="btn btn-warning">Submit</button>
+                        <button type="submit" class="btn btn-success">Update</button>
                         </div>
                         </div>
                     </form>

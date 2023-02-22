@@ -32,8 +32,10 @@ class SppController extends Controller
 
 
     public function edit(Request $request, $id)
-    {
-        return view('edit-spp',['id'=>$id]);
+    {   $spp = DB::table('spp')->where('id_spp',$id)->first();
+        return view('edit-spp',['id'=>$id,
+        'spp' => $spp
+    ]);
     }
 
 

@@ -37,8 +37,10 @@ class SiswaController extends Controller
 
 
     public function edit(Request $request, $id)
-    {
-        return view('edit-siswa',['id'=>$id]);
+    {   $siswa = DB::table('siswa')->where('nisn',$id)->first();
+        return view('edit-siswa',['id'=>$id,
+        'siswa' => $siswa
+    ]);
     }
 
 

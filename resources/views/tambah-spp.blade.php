@@ -11,19 +11,22 @@
 
 
                         <div class="form-group">
+                        <label for="exampleInputEmail1" class="form-label">ID Spp</label>
                             <input type="text" id="nama" name="id_spp" class="form-control" placeholder="id_spp">
                         </div>
 
                         <div class="form-group">
+                        <label for="exampleInputEmail1" class="form-label">Tahun</label>
                             <input type="text" id="nama" name="tahun" class="form-control" placeholder="tahun">
                         </div>
 
                         <div class="form-group">
+                        <label for="exampleInputEmail1" class="form-label">Nominal</label>
                             <input type="text" id="nama" name="nominal" class="form-control" placeholder="nominal">
 
                         </div>
 
-                        <button type="submit" class="btn btn-warning">Submit</button>
+                        <button type="submit" class="btn btn-success">Tambah</button>
                         </div>
                         </div>
                     </form>

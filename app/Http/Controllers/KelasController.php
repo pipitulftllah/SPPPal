@@ -24,7 +24,7 @@ class KelasController extends Controller
         DB::table('kelas')->insert([
             'id_kelas' => $request->id_kelas,
             'nama_kelas' => $request->nama_kelas,
-            'id_kk' => $request->id_kk,
+            'kompetensi_keahlian' => $request->kompetensi_keahlian,
         ]);
         return redirect('/kelas');
     }
@@ -32,8 +32,10 @@ class KelasController extends Controller
 
 
     public function edit(Request $request, $id)
-    {
-        return view('edit-kelas',['id'=>$id]);
+    {   $kelas = DB::table('kelas')->where('id_kelas',$id)->first();
+        return view('edit-kelas',['id'=>$id,
+        'kelas' => $kelas
+    ]);
     }
 
 
@@ -42,7 +44,7 @@ class KelasController extends Controller
         // dd($request->all());
         DB::table('kelas')->where('id_kelas' , $id)->update([
             'nama_kelas' => $request->nama_kelas,
-            'id_kk' => $request->id_kk,
+            'kompetensi_keahlian' => $request->kompetensi_keahlian,
         ]);
         return redirect('/kelas');
     }

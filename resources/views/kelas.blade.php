@@ -20,7 +20,7 @@
                     <tr>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id_kelas</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">nama_kelas</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id_kk</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">kompetensi_keahlian</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">aksi</th>
                     </tr>
                   </thead>
@@ -35,7 +35,7 @@
                                 <span class="text-sm font-weight-bold mb-0">{{ $get->nama_kelas }}</span>
                             </td>
                             <td class="align-middle text-center text-sm">
-                                <span class="text-sm font-weight-bold mb-0">{{ $get->id_kk }}</span>
+                                <span class="text-sm font-weight-bold mb-0">{{ $get->kompetensi_keahlian }}</span>
                             </td>
                             <td>
                                 <a href="/kelas/edit/{{ $get->id_kelas}}"class="btn btn-info">Update</a>

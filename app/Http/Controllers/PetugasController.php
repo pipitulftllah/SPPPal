@@ -23,7 +23,10 @@ class PetugasController extends Controller
     {
         DB::table('petugas')->insert([
             'id_petugas' => $request->id_petugas,
+            'username' => $request->username,
+            'password' => $request->password,
             'nama_petugas' => $request->nama_petugas,
+            'level' => $request->level,
             'id_login' => $request->id_login,
         ]);
         return redirect('/petugas');
@@ -32,8 +35,10 @@ class PetugasController extends Controller
 
 
     public function edit(Request $request, $id)
-    {
-        return view('edit-petugas',['id'=>$id]);
+    {   $petugas = DB::table('petugas')->where('id_petugas',$id)->first();
+        return view('edit-petugas',['id'=>$id,
+        'petugas' => $petugas
+    ]);
     }
 
 
@@ -41,7 +46,10 @@ class PetugasController extends Controller
     {
         // dd($request->all());
         DB::table('petugas')->where('id_petugas' , $id)->update([
+            'username' => $request->nama_petugas,
+            'password' => $request->nama_petugas,
             'nama_petugas' => $request->nama_petugas,
+            'level' => $request->level,
             'id_login' => $request->id_login,
         ]);
         return redirect('/petugas');
