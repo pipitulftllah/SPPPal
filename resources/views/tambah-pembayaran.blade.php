@@ -16,18 +16,13 @@
                         </div>
 
                         <div class="form-group">
-                        <label for="exampleInputEmail1" class="form-label">ID Petugas</label>
-                            <input type="text" id="nama" name="id_petugas" class="form-control" placeholder="id_petugas">
-                        </div>
-
-                        <div class="form-group">
                         <label for="exampleInputEmail1" class="form-label">NISN</label>
                             <input type="text" id="nama" name="nisn" class="form-control" placeholder="nisn">
                         </div>
 
                         <div class="form-group">
                         <label for="exampleInputEmail1" class="form-label">Tanggal Bayar</label>
-                            <input type="text" id="nama" name="tgl_bayar" class="form-control" placeholder="tgl_bayar">
+                            <input type="date" id="nama" name="tgl_bayar" class="form-control" placeholder="tgl_bayar">
                         </div>
 
                         <div class="form-group">

@@ -20,10 +20,6 @@
                             <input type="text" id="nama" name="username" class="form-control" placeholder="username">
                         </div>
 
-                        <div class="form-group">
-                        <label for="exampleInputEmail1" class="form-label">Password</label>
-                            <input type="text" id="nama" name="password" class="form-control" placeholder="password">
-                        </div>
 
                         <div class="form-group">
                         <label for="exampleInputEmail1" class="form-label">Nama Petugas</label>
@@ -34,14 +30,9 @@
                         <label for="exampleInputEmail1" class="form-label">Level</label>
                         <select class="form-select" name="level" aria-label="Default select example">
                         <option selected>Level</option>
-                        <option value="admin">Admin</option>
-                        <option value="petugas">Petugas</option>
+                        <option value="admin">admin</option>
+                        <option value="petugas">petugas</option>
                         </select>
-                        </div>
-
-                        <div class="form-group">
-                        <label for="exampleInputEmail1" class="form-label">ID Login</label>
-                            <input type="text" id="nama" name="id_login" class="form-control" placeholder="id_login">
                         </div>
 
                         <button type="submit" class="btn btn-success">Tambah</button>

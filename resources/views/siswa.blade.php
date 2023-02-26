@@ -5,7 +5,7 @@
 
 <br>
 
-<a href="/siswa/create"class="btn btn-success">+ Add New Data</a>
+<a href="/siswa/create"class="btn btn-success">+ Tambah Data</a>
 <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
@@ -25,7 +25,6 @@
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">alamat</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">no_telp</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id_spp</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id_login</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">aksi</th>
                     </tr>
                   </thead>
@@ -54,12 +53,9 @@
                             <td class="align-middle text-center text-sm">
                                 <span class="text-sm font-weight-bold mb-0">{{ $get->id_spp }}</span>
                             </td>
-                            <td class="align-middle text-center text-sm">
-                                <span class="text-sm font-weight-bold mb-0">{{ $get->id_login }}</span>
-                            </td>
                             <td>
-                                <a href="/siswa/edit/{{ $get->nisn}}"class="btn btn-info">Update</a>
-                                <a href="/siswa/delete/{{ $get->nisn}}"class="btn btn-danger">Delete</a>
+                                <a href="/siswa/edit/{{ $get->nisn}}"class="btn btn-info">Edit</a>
+                                <a href="/siswa/delete/{{ $get->nisn}}"class="btn btn-danger">Hapus</a>
                             </td>
                         </tr>
                     @endforeach

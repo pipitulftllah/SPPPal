@@ -5,7 +5,7 @@
 
 <br>
 
-<a href="/pembayaran/create"class="btn btn-success">+ Add New Data</a>
+<a href="/pembayaran/create"class="btn btn-success">+ Tambah Data</a>
 <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
@@ -18,9 +18,7 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id_pembayaran</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id_petugas</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">nisn</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id_pembayaran</th>                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">nisn</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">tgl_bayar</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">bulan_dibayar</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">tahun_dibayar</th>
@@ -35,9 +33,6 @@
                         <tr>
                             <td class="align-middle text-center text-sm">
                                 <span class="text-sm font-weight-bold mb-0">{{ $get->id_pembayaran }}</span>
-                            </td>
-                            <td class="align-middle text-center text-sm">
-                                <span class="text-sm font-weight-bold mb-0">{{ $get->id_petugas }}</span>
                             </td>
                             <td class="align-middle text-center text-sm">
                                 <span class="text-sm font-weight-bold mb-0">{{ $get->nisn }}</span>
@@ -58,8 +53,10 @@
                                 <span class="text-sm font-weight-bold mb-0">{{ $get->jumlah_bayar }}</span>
                             </td>
                             <td>
-                                <a href="/pembayaran/edit/{{ $get->id_pembayaran}}"class="btn btn-info">Update</a>
-                                <a href="/pembayaran/delete/{{ $get->id_pembayaran}}"class="btn btn-danger">Delete</a>
+                                <a href="/pembayaran/edit/{{ $get->id_pembayaran}}"class="btn btn-info">Edit</a>
+                                <a href="/pembayaran/delete/{{ $get->id_pembayaran}}"class="btn btn-danger">Hapus</a>
+                                <a href="{{ route('pembayaran.cetak-pdf', ['id' => $get->id_pembayaran]) }}"
+                                                    target="_blank" class="btn btn-warning">Cetak</a>
                                </td>
                         </tr>
                     @endforeach

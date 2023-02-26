@@ -5,7 +5,7 @@
 
 <br>
 
-<a href="/kelas/create"class="btn btn-success">+ Add New Data</a>
+<a href="/kelas/create"class="btn btn-success">+ Tambah Data</a>
 <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
@@ -38,8 +38,8 @@
                                 <span class="text-sm font-weight-bold mb-0">{{ $get->kompetensi_keahlian }}</span>
                             </td>
                             <td>
-                                <a href="/kelas/edit/{{ $get->id_kelas}}"class="btn btn-info">Update</a>
-                                <a href="/kelas/delete/{{ $get->id_kelas}}"class="btn btn-danger">Delete</a>
+                                <a href="/kelas/edit/{{ $get->id_kelas}}"class="btn btn-info">Edit</a>
+                                <a href="/kelas/delete/{{ $get->id_kelas}}"class="btn btn-danger">Hapus</a>
                                </td>
                         </tr>
                     @endforeach

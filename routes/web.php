@@ -64,9 +64,32 @@ Route::post('petugas/update/{id}', [PetugasController::class, 'update'])->name('
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::prefix('pembayaran')->middleware(['auth', 'role:admin|petugas'])->group(function(){
+	Route::get('bayar', 'PembayaranController@index')->name('pembayaran.index');
+	Route::get('bayar/{nisn}', 'PembayaranController@bayar')->name('pembayaran.bayar');
+	Route::get('spp/{tahun}', 'PembayaranController@spp')->name('pembayaran.spp');
+	Route::post('bayar/{nisn}', 'PembayaranController@prosesBayar')->name('pembayaran.proses-bayar');
+	Route::get('status-pembayaran', 'PembayaranController@statusPembayaran')
+		->name('pembayaran.status-pembayaran');
+
+	Route::get('status-pembayaran/{siswa:nisn}', 'PembayaranController@statusPembayaranShow')
+		->name('pembayaran.status-pembayaran.show');
+
+	Route::get('status-pembayaran/{nisn}/{tahun}', 'PembayaranController@statusPembayaranShowStatus')
+		->name('pembayaran.status-pembayaran.show-status');
+	
+	Route::get('history-pembayaran', 'PembayaranController@historyPembayaran')
+		->name('pembayaran.history-pembayaran');
+	
+	Route::get('history-pembayaran/preview/{id}', 'PembayaranController@printHistoryPembayaran')
+		->name('pembayaran.history-pembayaran.print');
+	
+	Route::get('laporan', 'PembayaranController@laporan')->name('pembayaran.laporan');
+	Route::post('laporan', 'PembayaranController@printPdf')->name('pembayaran.print-pdf');
+});
 require __DIR__.'/auth.php';

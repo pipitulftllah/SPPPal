@@ -45,10 +45,6 @@
                             <input type="text" id="nama" name="id_spp" class="form-control" placeholder="id_spp">
                         </div>
 
-                        <div class="form-group">
-                        <label for="exampleInputEmail1" class="form-label">ID Login</label>
-                            <input type="text" id="nama" name="id_login" class="form-control" placeholder="id_login">
-                        </div>
 
                         <button type="submit" class="btn btn-success">Tambah</button>
                         </div>

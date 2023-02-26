@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class PembayaranController extends Controller
 {
@@ -23,7 +24,6 @@ class PembayaranController extends Controller
     {
         DB::table('pembayaran')->insert([
             'id_pembayaran' => $request->id_pembayaran,
-            'id_petugas' => $request->id_petugas,
             'nisn' => $request->nisn,
             'tgl_bayar' => $request->tgl_bayar,
             'bulan_dibayar' => $request->bulan_dibayar,
@@ -49,7 +49,6 @@ class PembayaranController extends Controller
     {
         // dd($request->all());
         DB::table('pembayaran')->where('id_pembayaran' , $id)->update([
-            'id_petugas' => $request->id_petugas,
             'nisn' => $request->nisn,
             'tgl_bayar' => $request->tgl_bayar,
             'bulan_dibayar' => $request->bulan_dibayar,
@@ -65,4 +64,12 @@ class PembayaranController extends Controller
         DB::table('pembayaran')->where('id_pembayaran', $id)->delete();
         return redirect('/pembayaran');
     }
+
+    public function cetakPdf($id)
+    {   $data = DB::table('pembayaran')->where('id_pembayaran', $id)->first();
+        
+        $pdf = PDF::loadview('pembayaran-pdf',['data'=> $data]);
+        return $pdf->stream();
+    }
+
 }

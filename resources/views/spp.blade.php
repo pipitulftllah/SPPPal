@@ -4,7 +4,7 @@
 
 <br>
 
-<a href="/spp/create"class="btn btn-success">+ Add New Data</a>
+<a href="/spp/create"class="btn btn-success">+ Tambah Data</a>
 <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
@@ -37,8 +37,8 @@
                                 <span class="text-sm font-weight-bold mb-0">{{ $get->nominal }}</span>
                             </td>
                            <td>
-                            <a href="/spp/edit/{{ $get->id_spp}}"class="btn btn-info">Update</a>
-                            <a href="/spp/delete/{{ $get->id_spp}}"class="btn btn-danger">Delete</a>
+                            <a href="/spp/edit/{{ $get->id_spp}}"class="btn btn-info">Edit</a>
+                            <a href="/spp/delete/{{ $get->id_spp}}"class="btn btn-danger">Hapus</a>
                            </td>
                         </tr>
                     @endforeach

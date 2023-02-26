@@ -29,7 +29,6 @@ class SiswaController extends Controller
             'alamat' => $request->alamat,
             'no_telp' => $request->no_telp,
             'id_spp' => $request->id_spp,
-            'id_login' => $request->id_login,
         ]);
         return redirect('/siswa');
     }
@@ -54,7 +53,6 @@ class SiswaController extends Controller
             'alamat' => $request->alamat,
             'no_telp' => $request->no_telp,
             'id_spp' => $request->id_spp,
-            'id_login' => $request->id_login,
         ]);
         return redirect('/siswa');
     }
