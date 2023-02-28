@@ -28,8 +28,20 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-
-        return redirect()->intended(RouteServiceProvider::HOME);
+        
+        // dd('adaaa');
+        if (Auth::user()->level == 'admin') {
+            
+        return redirect()->intended('/');
+        }
+        else if(Auth::user()->level == 'petugas'){
+            
+        return redirect()->intended('/');
+        } else {
+            
+        return redirect()->intended('/pembayaran/history_pembayaran');
+        
+        }
     }
 
     /**
@@ -43,6 +55,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/login');
     }
 }

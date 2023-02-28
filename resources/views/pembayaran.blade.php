@@ -5,7 +5,7 @@
 
 <br>
 
-<a href="/pembayaran/create"class="btn btn-success">+ Tambah Data</a>
+<a href="/siswa"class="btn btn-success">+ Tambah Data</a>
 <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">

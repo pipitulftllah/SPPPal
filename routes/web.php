@@ -6,7 +6,9 @@ use App\Http\Controllers\SppController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PetugasController;
+use App\Http\Controllers\LaporanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +29,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
+Route::get('/dashboard-admin', [DashboardController::class,'index'])->name('dashboard-admin');
+Route::get('/dashboard-petugas', [DashboardController::class,'index1'])->name('dashboard-petugas');
+Route::get('/dashboard-siswa', [DashboardController::class,'index2'])->name('dashboard-siswa');
 Route::get('spp', [SppController::class, 'index']);
 Route::get('spp/create', [SppController::class, 'create']);
 Route::post('spp/store', [SppController::class, 'store']);
@@ -36,6 +42,8 @@ Route::post('spp/update/{id}', [SppController::class, 'update'])->name('spp.upda
 
 Route::get('siswa', [SiswaController::class, 'index']);
 Route::get('siswa/create', [SiswaController::class, 'create']);
+Route::get('siswa/bayar/{id}', [SiswaController::class, 'bayar']);
+Route::post('siswa/prosesbayar/{id}', [SiswaController::class, 'prosesbayar']);
 Route::post('siswa/store', [SiswaController::class, 'store']);
 Route::get('siswa/delete/{id}', [SiswaController::class, 'delete']);
 Route::get('siswa/edit/{id}', [SiswaController::class, 'edit'])->name('siswa.edit');
@@ -54,6 +62,9 @@ Route::post('pembayaran/store', [PembayaranController::class, 'store']);
 Route::get('pembayaran/delete/{id}', [PembayaranController::class, 'delete']);
 Route::get('pembayaran/edit/{id}', [PembayaranController::class, 'edit'])->name('pembayaran.edit');
 Route::post('pembayaran/update/{id}', [PembayaranController::class, 'update'])->name('pembayaran.update');
+Route::get('pembayaran/cetak-pdf/{id}', [PembayaranController::class,'cetakPdf'])->name('pembayaran.cetak-pdf');
+Route::get('pembayaran/history_pembayaran/cetak-pdf/{id}', [PembayaranController::class,'cetakPdf1'])->name('history_pembayaran.cetak-pdf');
+Route::get('pembayaran/history_pembayaran', [PembayaranController::class, 'history_pembayaran']);
 
 Route::get('petugas', [PetugasController::class, 'index']);
 Route::get('petugas/create', [PetugasController::class, 'create']);
@@ -62,6 +73,12 @@ Route::get('petugas/delete/{id}', [PetugasController::class, 'delete']);
 Route::get('petugas/edit/{id}', [PetugasController::class, 'edit'])->name('petugas.edit');
 Route::post('petugas/update/{id}', [PetugasController::class, 'update'])->name('petugas.update');
 
+Route::prefix('laporan')->group(function () {
+    Route::match(['POST','GET'],'/', [LaporanController::class,'index'])->name('laporan.index');
+    Route::get('/cetak-pdf/{tgl_mulai}/{tgl_akhir}', [LaporanController::class,'cetakPdf'])->name('laporan.cetak-pdf');
+});
+
+
 
 Route::middleware('auth')->group(function () {
 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -69,27 +86,4 @@ Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.up
 Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::prefix('pembayaran')->middleware(['auth', 'role:admin|petugas'])->group(function(){
-	Route::get('bayar', 'PembayaranController@index')->name('pembayaran.index');
-	Route::get('bayar/{nisn}', 'PembayaranController@bayar')->name('pembayaran.bayar');
-	Route::get('spp/{tahun}', 'PembayaranController@spp')->name('pembayaran.spp');
-	Route::post('bayar/{nisn}', 'PembayaranController@prosesBayar')->name('pembayaran.proses-bayar');
-	Route::get('status-pembayaran', 'PembayaranController@statusPembayaran')
-		->name('pembayaran.status-pembayaran');
-
-	Route::get('status-pembayaran/{siswa:nisn}', 'PembayaranController@statusPembayaranShow')
-		->name('pembayaran.status-pembayaran.show');
-
-	Route::get('status-pembayaran/{nisn}/{tahun}', 'PembayaranController@statusPembayaranShowStatus')
-		->name('pembayaran.status-pembayaran.show-status');
-	
-	Route::get('history-pembayaran', 'PembayaranController@historyPembayaran')
-		->name('pembayaran.history-pembayaran');
-	
-	Route::get('history-pembayaran/preview/{id}', 'PembayaranController@printHistoryPembayaran')
-		->name('pembayaran.history-pembayaran.print');
-	
-	Route::get('laporan', 'PembayaranController@laporan')->name('pembayaran.laporan');
-	Route::post('laporan', 'PembayaranController@printPdf')->name('pembayaran.print-pdf');
-});
 require __DIR__.'/auth.php';

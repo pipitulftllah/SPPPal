@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2023 at 02:05 PM
+-- Generation Time: Feb 28, 2023 at 09:02 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -55,7 +55,8 @@ CREATE TABLE `kelas` (
 
 INSERT INTO `kelas` (`id_kelas`, `nama_kelas`, `kompetensi_keahlian`) VALUES
 (777, 'RPL 1', 'Rekayasa Perangkat Lunak'),
-(888, 'TFLM 2', 'Teknik Pengelasan');
+(888, 'TFLM 2', 'Teknik Pengelasan'),
+(999, 'RPL 2', 'Rekayasa Perangkat Lunak');
 
 -- --------------------------------------------------------
 
@@ -90,7 +91,33 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(5, '2023_01_24_020027_create_lelangs_table', 1);
+(5, '2023_01_24_020027_create_lelangs_table', 1),
+(6, '2014_10_12_100000_create_password_reset_tokens_table', 2),
+(7, '2023_02_26_001723_create_permission_tables', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `model_has_permissions`
+--
+
+CREATE TABLE `model_has_permissions` (
+  `permission_id` bigint(20) UNSIGNED NOT NULL,
+  `model_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `model_has_roles`
+--
+
+CREATE TABLE `model_has_roles` (
+  `role_id` bigint(20) UNSIGNED NOT NULL,
+  `model_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -99,6 +126,18 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `password_resets` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_reset_tokens`
+--
+
+CREATE TABLE `password_reset_tokens` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
@@ -126,8 +165,26 @@ CREATE TABLE `pembayaran` (
 --
 
 INSERT INTO `pembayaran` (`id_pembayaran`, `id_petugas`, `nisn`, `tgl_bayar`, `bulan_dibayar`, `tahun_dibayar`, `id_spp`, `jumlah_bayar`) VALUES
-(1111, 111111, '123', '2023-02-01', 'juni', '2023', 1, 870000000),
-(2222, 222222, '124', '2023-03-06', 'agustus', '2023', 2, 650000000);
+(1, 1, '123', '2023-02-01', 'juni', '2019', 1, 870000000),
+(2, 1, '124', '2023-03-06', 'agustus', '2023', 2, 650000000),
+(3, 2, '124', '2023-02-24', 'februari', '2023', 3, 67000000),
+(4, 2, '123', '2023-02-27', 'Januari', '2023', 1, 5000000),
+(5, 2, '123', '2023-02-27', 'Januari', '2019', 2, 2600000),
+(6, 2, '123', '2023-02-27', 'Februari', '2019', 2, 2600000);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `permissions`
+--
+
+CREATE TABLE `permissions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `guard_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -168,8 +225,33 @@ CREATE TABLE `petugas` (
 --
 
 INSERT INTO `petugas` (`id_petugas`, `nama_petugas`, `id_login`, `username`, `password`, `level`) VALUES
-(111111, 'pipit', '1', 'pipitulftllah', '123', 'admin'),
-(222222, 'Jamal', '2', 'Jamal', '124', 'petugas');
+(1, 'Admin', '1', 'admin', '123', 'admin'),
+(2, 'Petugas', '2', 'petugas', '124', 'petugas');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `guard_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `role_has_permissions`
+--
+
+CREATE TABLE `role_has_permissions` (
+  `permission_id` bigint(20) UNSIGNED NOT NULL,
+  `role_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -193,8 +275,12 @@ CREATE TABLE `siswa` (
 --
 
 INSERT INTO `siswa` (`nisn`, `nis`, `nama`, `id_kelas`, `alamat`, `no_telp`, `id_spp`, `id_login`) VALUES
-('123', '144', 'pipit', 777, 'bogor', '085899865188', 1, 22),
-('124', '155', 'gladis', 888, 'bogor', '0879787686', 2, 23);
+('123', '144', 'pipit', 777, 'bogor', '085899865188', 1, 3),
+('124', '155', 'gladis', 888, 'bogor', '0879787686', 2, 4),
+('125', '166', 'maya', 777, 'bogor', '0877686695', 1, 4),
+('126', '177', 'yuli', 888, 'bogor', '08786766655', 1, 5),
+('127', '188', 'sri', 888, 'bogor', '0867456533', 2, 6),
+('128', '199', 'siti rohimah fauziah', 777, 'jl sirotul mustaqim', '086755764454', 1, 7);
 
 -- --------------------------------------------------------
 
@@ -214,9 +300,7 @@ CREATE TABLE `spp` (
 
 INSERT INTO `spp` (`id_spp`, `tahun`, `nominal`) VALUES
 (1, '2023', 5000000),
-(2, '2019', 2600000),
-(3, '2022', 130000),
-(4, '2025', 850000),
+(2, '2021', 2600000),
 (5, '2022', 600000);
 
 -- --------------------------------------------------------
@@ -232,6 +316,7 @@ CREATE TABLE `users` (
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `level` enum('petugas','admin','siswa') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'siswa',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -240,10 +325,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'pipit', 'pipitulftllah@gmail.com', NULL, '$2y$10$dPAIu9mWV09Nd7hMJrHrHeJAxZnYvuCdWR54TGOt2HUT9Bf6aFbDq', NULL, '2023-02-05 18:38:47', '2023-02-05 18:38:47'),
-(2, 'jaehyun', 'jungjaehyun@gmail.com', NULL, '$2y$10$cX4LRGNhJpV7TqdGyTSZC.Bkk9XMYpO2wj7wwZlTrkUhBRoMvQf/e', NULL, '2023-02-05 18:41:12', '2023-02-05 18:41:12'),
-(3, 'yulia', 'sri.yulia2004@gmail.com', NULL, '$2y$10$LMYasqOsK7Td6/uyo.z.X.E5yoZRbiE4YFDPcH2rVvnZkrF5uN1vm', NULL, '2023-02-13 17:20:41', '2023-02-13 17:20:41');
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `level`, `created_at`, `updated_at`) VALUES
+(1, 'admin', 'admin@gmail.com', NULL, '$2y$10$LQhTYsxfUoCvgFnb/pbxy.yN6y7i4Qf9ikviyTsYiHlRa84B1dOum', NULL, 'admin', '2023-02-25 05:04:50', '2023-02-25 17:26:36'),
+(2, 'petugas', 'petugas@gmail.com', NULL, '$2y$10$gF7nPs4ANS42boPq2QICg.lsjVb58i6GPKSd37j1GigI6RzbNVU0G', NULL, 'petugas', '2023-02-25 17:57:26', '2023-02-25 17:57:26'),
+(3, 'pipit', 'pipit@gmail.com', NULL, '$2y$10$tfAZvPvFY96yc4m.jF/TCeHLEmLMaO.vHB3FA3OMTMBEevO/OJG/q', NULL, 'siswa', '2023-02-25 17:58:41', '2023-02-25 17:58:41');
 
 --
 -- Indexes for dumped tables
@@ -276,9 +361,29 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `model_has_permissions`
+--
+ALTER TABLE `model_has_permissions`
+  ADD PRIMARY KEY (`permission_id`,`model_id`,`model_type`),
+  ADD KEY `model_has_permissions_model_id_model_type_index` (`model_id`,`model_type`);
+
+--
+-- Indexes for table `model_has_roles`
+--
+ALTER TABLE `model_has_roles`
+  ADD PRIMARY KEY (`role_id`,`model_id`,`model_type`),
+  ADD KEY `model_has_roles_model_id_model_type_index` (`model_id`,`model_type`);
+
+--
 -- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
+  ADD PRIMARY KEY (`email`);
+
+--
+-- Indexes for table `password_reset_tokens`
+--
+ALTER TABLE `password_reset_tokens`
   ADD PRIMARY KEY (`email`);
 
 --
@@ -290,6 +395,13 @@ ALTER TABLE `pembayaran`
   ADD KEY `id_spp` (`id_spp`),
   ADD KEY `jumlah_bayar` (`jumlah_bayar`),
   ADD KEY `nisn` (`nisn`);
+
+--
+-- Indexes for table `permissions`
+--
+ALTER TABLE `permissions`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `permissions_name_guard_name_unique` (`name`,`guard_name`);
 
 --
 -- Indexes for table `personal_access_tokens`
@@ -305,6 +417,20 @@ ALTER TABLE `personal_access_tokens`
 ALTER TABLE `petugas`
   ADD PRIMARY KEY (`id_petugas`),
   ADD KEY `id_login` (`id_login`);
+
+--
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `roles_name_guard_name_unique` (`name`,`guard_name`);
+
+--
+-- Indexes for table `role_has_permissions`
+--
+ALTER TABLE `role_has_permissions`
+  ADD PRIMARY KEY (`permission_id`,`role_id`),
+  ADD KEY `role_has_permissions_role_id_foreign` (`role_id`);
 
 --
 -- Indexes for table `siswa`
@@ -348,7 +474,19 @@ ALTER TABLE `lelangs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `pembayaran`
+--
+ALTER TABLE `pembayaran`
+  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `permissions`
+--
+ALTER TABLE `permissions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -357,21 +495,39 @@ ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `pembayaran`
+-- Constraints for table `model_has_permissions`
 --
-ALTER TABLE `pembayaran`
-  ADD CONSTRAINT `pembayaran_ibfk_1` FOREIGN KEY (`nisn`) REFERENCES `siswa` (`nisn`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `pembayaran_ibfk_2` FOREIGN KEY (`id_petugas`) REFERENCES `petugas` (`id_petugas`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `model_has_permissions`
+  ADD CONSTRAINT `model_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `model_has_roles`
+--
+ALTER TABLE `model_has_roles`
+  ADD CONSTRAINT `model_has_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `role_has_permissions`
+--
+ALTER TABLE `role_has_permissions`
+  ADD CONSTRAINT `role_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `role_has_permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `siswa`

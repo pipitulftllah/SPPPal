@@ -17,10 +17,10 @@
     <body class="font-sans text-gray-900 antialiased">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
             <div>
-            <h1>APLIKASI PEMBAYARAN SPP</h1>
+            <center><h1>APLIKASI SPPPal</h1></center>
             <br>
                 <a href="/">
-                <img src="https://pjj.smkn4bogor.sch.id/pluginfile.php/1/core_admin/logocompact/300x300/1662946883/LOGO%20SMKN%204.png">
+                <img src="assets/img/SPPPal.png">
                 </a>
             </div>
 

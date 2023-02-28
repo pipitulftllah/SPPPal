@@ -147,7 +147,7 @@ class PembayaranController extends Controller
         return view('pembayaran.status-pembayaran-show', compact('siswa', 'spp', 'pembayaran'));
     }
 
-    public function historyPembayaran(Request $request)
+    public function history_pembayaran(Request $request)
     {
         if ($request->ajax()) {
             $data = Pembayaran::with(['petugas', 'siswa' => function($query){

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use PDF;
+use App\Models\{Pembayaran};
 
 class PembayaranController extends Controller
 {
@@ -13,6 +14,27 @@ class PembayaranController extends Controller
         $pembayaran = DB::select('select * from pembayaran');
         return view('pembayaran',['pembayaran' => $pembayaran]);
     }
+
+    public function laporan()
+    {
+        return view('laporan');
+    }
+    
+    public function history_pembayaran(Request $request)
+    {
+
+        // dd(auth()->user());
+        if (auth()->user()->level == 'siswa') {
+            $data = Pembayaran::where('nisn',DB::table('siswa')->where('id_login',auth()->user()->id)->first()->nisn)->get();
+
+        } {
+            $data = Pembayaran::get();
+
+        }
+    	return view('history_pembayaran',['pembayaran'=>$data]);
+    }
+
+
 
     public function create(Request $request)
     {
@@ -69,6 +91,13 @@ class PembayaranController extends Controller
     {   $data = DB::table('pembayaran')->where('id_pembayaran', $id)->first();
         
         $pdf = PDF::loadview('pembayaran-pdf',['data'=> $data]);
+        return $pdf->stream();
+    }
+
+    public function cetakPdf1($id)
+    {   $data = DB::table('pembayaran')->where('id_pembayaran', $id)->first();
+        
+        $pdf = PDF::loadview('history_pembayaran-pdf',['data'=> $data]);
         return $pdf->stream();
     }
 

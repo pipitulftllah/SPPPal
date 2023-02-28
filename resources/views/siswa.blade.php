@@ -25,6 +25,7 @@
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">alamat</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">no_telp</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id_spp</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id_login</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">aksi</th>
                     </tr>
                   </thead>
@@ -53,9 +54,13 @@
                             <td class="align-middle text-center text-sm">
                                 <span class="text-sm font-weight-bold mb-0">{{ $get->id_spp }}</span>
                             </td>
+                            <td class="align-middle text-center text-sm">
+                                <span class="text-sm font-weight-bold mb-0">{{ $get->id_login }}</span>
+                            </td>
                             <td>
                                 <a href="/siswa/edit/{{ $get->nisn}}"class="btn btn-info">Edit</a>
                                 <a href="/siswa/delete/{{ $get->nisn}}"class="btn btn-danger">Hapus</a>
+                                <a href="/siswa/bayar/{{ $get->nisn}}"class="btn btn-warning">Bayar</a>
                             </td>
                         </tr>
                     @endforeach

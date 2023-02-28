@@ -5,12 +5,46 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-
+use App\Models\Pembayaran;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 class SiswaController extends Controller
 {
     public function index(){
         $siswa = DB::select('select * from siswa');
         return view('siswa',['siswa' => $siswa]);
+    }
+
+    public function bayar($id)
+    {
+        $siswa = DB::table('siswa')->where('nisn',$id)->first();
+        return view('siswa-bayar',['siswa'=>$siswa]);
+    }
+    
+    public function prosesBayar(Request $request,$id)
+    {
+        
+        $siswa = DB::table('siswa')->where('nisn',$id)->first();
+        $spp = DB::table('spp')->where('tahun',$request->tahun_dibayar)->first();
+
+        
+    
+        foreach ($request->bulan_dibayar as $key => $value) {
+        // dd($value);            
+        DB::table('pembayaran')->insert([
+           
+            'id_petugas' => Auth::user()->id,
+            'nisn' => $siswa->nisn,
+            'tgl_bayar' => Carbon::now(),
+            'bulan_dibayar' => $value,
+            'tahun_dibayar' => $request->tahun_dibayar,
+            'id_spp' => $spp->id_spp,
+            'jumlah_bayar' => $spp->nominal,
+        ]);
+
+        }
+
+        return redirect()->back();
     }
 
     public function create(Request $request)
@@ -29,6 +63,7 @@ class SiswaController extends Controller
             'alamat' => $request->alamat,
             'no_telp' => $request->no_telp,
             'id_spp' => $request->id_spp,
+            'id_login' => $request->id_login
         ]);
         return redirect('/siswa');
     }
@@ -53,6 +88,7 @@ class SiswaController extends Controller
             'alamat' => $request->alamat,
             'no_telp' => $request->no_telp,
             'id_spp' => $request->id_spp,
+            'id_login' => $request->id_login
         ]);
         return redirect('/siswa');
     }

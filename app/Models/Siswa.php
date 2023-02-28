@@ -1,34 +1,20 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
 
-class Siswa extends CI_Model
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Siswa extends Model
 {
-    public function get_siswa($id)
-    {
-        $this->db->select('*');
-        $this->db->from('siswa');
-        $this->db->where('id', $id);
-        $this->db->join('kelas', 'kelas.id_kelas=siswa.id_kelas');
-        $query = $this->db->get_where()->row_array();
-        return $query;
-    }
+    
+    protected $table = 'siswa';
+    protected $primary = 'nisn';
 
-    public function get_all()
+    
+    public function kelas()
     {
-        $this->db->select('*');
-        $this->db->from('siswa');
-        $this->db->where('level', 'Murid');
-        $this->db->join('kelas', 'siswa.id_kelas=kelas.id_kelas');
-        $query = $this->db->get()->result_array();
-        return $query;
+        return $this->belongsTo(Kelas::class,'id_kelas','id_kelas');
     }
-
-    public function get_petugas()
-    {
-        $this->db->select('*');
-        $this->db->from('siswa');
-        $this->db->where('level', 'Admin');
-        $query = $this->db->get()->result_array();
-        return $query;
-    }
+    use HasFactory;
 }
