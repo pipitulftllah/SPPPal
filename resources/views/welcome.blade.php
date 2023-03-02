@@ -232,7 +232,7 @@
   <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
 </svg>
               </div>
-              <span class="nav-link-text ms-1">Sign In</span>
+              <span class="nav-link-text ms-1">Login</span>
             </a>
           </li>
 
@@ -245,7 +245,7 @@
   <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
 </svg>
               </div>
-              <span class="nav-link-text ms-1">Sign Up</span>
+              <span class="nav-link-text ms-1">Register</span>
             </a>
           </li>
 

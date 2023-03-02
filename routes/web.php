@@ -75,7 +75,7 @@ Route::post('petugas/update/{id}', [PetugasController::class, 'update'])->name('
 
 Route::prefix('laporan')->group(function () {
     Route::match(['POST','GET'],'/', [LaporanController::class,'index'])->name('laporan.index');
-    Route::get('/cetak-pdf/{tgl_mulai}/{tgl_akhir}', [LaporanController::class,'cetakPdf'])->name('laporan.cetak-pdf');
+    Route::get('/cetak-pdf/{tgl_bayar}', [LaporanController::class,'cetakPdf'])->name('laporan.cetak-pdf');
 });
 
 

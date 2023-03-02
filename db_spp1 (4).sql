@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 28, 2023 at 09:02 AM
+-- Generation Time: Mar 02, 2023 at 08:39 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -55,8 +55,15 @@ CREATE TABLE `kelas` (
 
 INSERT INTO `kelas` (`id_kelas`, `nama_kelas`, `kompetensi_keahlian`) VALUES
 (777, 'RPL 1', 'Rekayasa Perangkat Lunak'),
-(888, 'TFLM 2', 'Teknik Pengelasan'),
-(999, 'RPL 2', 'Rekayasa Perangkat Lunak');
+(888, 'RPL 2', 'Rekayasa Perangkat Lunak'),
+(999, 'TKJ 1', 'Teknik Komputer dan Jaringan'),
+(1000, 'TKJ 2', 'Teknik Komputer dan Jaringan'),
+(2000, 'TKJ 3', 'Teknik Komputer dan Jaringan'),
+(3000, 'TKRO 1', 'Teknik Kendaraan Ringan'),
+(4000, 'TKRO 2', 'Teknik Kendaraan Ringan'),
+(5000, 'TKRO 3', 'Teknik Kendaraan Ringan'),
+(6000, 'TFLM 1', 'Teknik Pengelasan'),
+(7000, 'TFLM 2', 'Teknik Pengelasan');
 
 -- --------------------------------------------------------
 
@@ -165,12 +172,11 @@ CREATE TABLE `pembayaran` (
 --
 
 INSERT INTO `pembayaran` (`id_pembayaran`, `id_petugas`, `nisn`, `tgl_bayar`, `bulan_dibayar`, `tahun_dibayar`, `id_spp`, `jumlah_bayar`) VALUES
-(1, 1, '123', '2023-02-01', 'juni', '2019', 1, 870000000),
-(2, 1, '124', '2023-03-06', 'agustus', '2023', 2, 650000000),
-(3, 2, '124', '2023-02-24', 'februari', '2023', 3, 67000000),
 (4, 2, '123', '2023-02-27', 'Januari', '2023', 1, 5000000),
 (5, 2, '123', '2023-02-27', 'Januari', '2019', 2, 2600000),
-(6, 2, '123', '2023-02-27', 'Februari', '2019', 2, 2600000);
+(6, 2, '123', '2023-02-27', 'Februari', '2019', 2, 2600000),
+(7, 1, '127', '2023-02-28', 'Maret', '2021', 1, 150000),
+(8, 2, '128', '2023-02-28', 'April', '2022', 2, 250000);
 
 -- --------------------------------------------------------
 
@@ -280,7 +286,8 @@ INSERT INTO `siswa` (`nisn`, `nis`, `nama`, `id_kelas`, `alamat`, `no_telp`, `id
 ('125', '166', 'maya', 777, 'bogor', '0877686695', 1, 4),
 ('126', '177', 'yuli', 888, 'bogor', '08786766655', 1, 5),
 ('127', '188', 'sri', 888, 'bogor', '0867456533', 2, 6),
-('128', '199', 'siti rohimah fauziah', 777, 'jl sirotul mustaqim', '086755764454', 1, 7);
+('128', '199', 'siti rohimah fauziah', 777, 'jl sirotul mustaqim', '086755764454', 1, 7),
+('129', '200', 'jul', 1000, 'bandung', '0887675553', 2, 8);
 
 -- --------------------------------------------------------
 
@@ -299,9 +306,9 @@ CREATE TABLE `spp` (
 --
 
 INSERT INTO `spp` (`id_spp`, `tahun`, `nominal`) VALUES
-(1, '2023', 5000000),
-(2, '2021', 2600000),
-(5, '2022', 600000);
+(1, '2021', 150000),
+(2, '2022', 250000),
+(5, '2023', 300000);
 
 -- --------------------------------------------------------
 
@@ -480,7 +487,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `permissions`

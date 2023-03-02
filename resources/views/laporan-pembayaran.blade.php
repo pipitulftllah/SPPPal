@@ -48,7 +48,7 @@
                             <h6>Pembayaran table</h6>
                         </div>
                         <div class="d-flex justify-content-end me-5">
-                            <a href="{{ route('laporan.cetak-pdf', ['tgl_mulai' => $tgl_mulai, 'tgl_bayar' => $tgl_bayar]) }}"
+                            <a href="{{ route('laporan.cetak-pdf', [ 'tgl_bayar' => $tgl_bayar]) }}"
                                 target="_blank" class="btn btn-danger">Cetak</a>
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
@@ -56,13 +56,11 @@
                                 <table class="table align-items-center mb-0">
                                     <thead>
                                         <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                NO PEMBAYARAN</th>
+                                            
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                NO CUTI</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                NAMA PEMOHON</th>
-                                            <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                TGL PENGAJUAN</th>
+                                                NAMA SISWA</th>
                                             <th
                                                 class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                 TGL AWAL</th>
@@ -79,18 +77,15 @@
                                                     <span class="text-secondary text-xs ms-3 font-weight-bold">
                                                         <button type="button" class="btn btn-primary"
                                                             data-bs-toggle="modal" data-bs-target="#datakaryawan"
-                                                            data-id="{{ $item->id }}">
+                                                            data-id="{{ $item->id_pembayaran }}">
                                                             {{ $item->id_pembayaran }}
                                                         </button>
                                                     </span>
                                                 </td>
-                                                <td class="align-middle ">
-                                                    <span
-                                                        class="text-secondary text-xs ms-3 font-weight-bold">{{ DB::table('users')->where('id', $item->user_id)->first()->name }}</span>
-                                                </td>
+                                            
                                                 <td class="align-middle">
                                                     <span
-                                                        class="text-secondary text-xs font-weight-bold">{{ $item->tgl_pengajuan }}</span>
+                                                        class="text-secondary text-xs font-weight-bold">{{ $item->siswa->nama }}</span>
                                                 </td>
                                                 <td class="align-middle">
                                                     <span
@@ -100,15 +95,11 @@
                                                     <span
                                                         class="text-secondary text-xs font-weight-bold">{{ $item->tgl_bayar }}</span>
                                                 </td>
-                                                <td style="width: 20%">
+                                                <td >
 
                                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                                        data-bs-target="#detailData" data-id="{{ $item->id }}"
-                                                        data-no_cuti="{{ $item->no_cuti }}"
-                                                        data-npp="{{ DB::table('users')->where('id', $item->user_id)->first()->npp }}"
-                                                        data-nama_pemohon="{{ DB::table('users')->where('id', $item->user_id)->first()->name }}"
-                                                        data-tgl_pengajuan="{{ $item->tgl_pengajuan }}"
-                                                        data-tgl_bayar="{{ $item->tgl_bayar }}"
+                                                        data-bs-target="#detailData" data-id="{{ $item->id_pembayaran }}"
+                                                      
                                                         data-tgl_bayar="{{ $item->tgl_bayar }}">
                                                         Detail
                                                     </button>
