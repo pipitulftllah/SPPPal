@@ -5,7 +5,8 @@
 
 <br>
 
-<a href="/kelas/create"class="btn btn-success">+ Tambah Data</a>
+<div class="container-fluid py-4">
+<a href="/kelas/create"class="btn btn-success">+ Tambah Data Kelas</a>
 <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
@@ -18,9 +19,9 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id_kelas</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">nama_kelas</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">kompetensi_keahlian</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id kelas</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">nama kelas</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">kompetensi keahlian</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">aksi</th>
                     </tr>
                   </thead>

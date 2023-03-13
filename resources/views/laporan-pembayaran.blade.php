@@ -8,15 +8,10 @@
                     @csrf
                     <div class="row">
                         <div class="mb-3 col-6">
-                            <label for="tgl_bayar" class="form-label">Tanggal Mulai</label>
+                            <label for="tgl_bayar" class="form-label">Tanggal Bayar</label>
                             <input type="date" class="form-control" id="tgl_bayar" name="tgl_bayar"
                                 placeholder="isi tgl_bayar">
-                        </div>
-                        <div class="mb-3 col-6">
-                            <label for="tgl_bayar" class="form-label">Tanggal Selesai</label>
-                            <input type="date" class="form-control" id="tgl_bayar" name="tgl_bayar"
-                                placeholder="isi tgl_bayar">
-                        </div>
+</div>
 
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="btn btn-success">Submit</button>
@@ -67,7 +62,6 @@
                                             <th
                                                 class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                 TGL AKHIR</th>
-                                            <th class="text-secondary opacity-7">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -95,16 +89,6 @@
                                                     <span
                                                         class="text-secondary text-xs font-weight-bold">{{ $item->tgl_bayar }}</span>
                                                 </td>
-                                                <td >
-
-                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                                        data-bs-target="#detailData" data-id="{{ $item->id_pembayaran }}"
-                                                      
-                                                        data-tgl_bayar="{{ $item->tgl_bayar }}">
-                                                        Detail
-                                                    </button>
-
-                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -116,91 +100,5 @@
             </div>
         </div>
 
-
-
-        <!-- Modal -->
-        <div class="modal fade" id="detailData" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="detailDataLabel" aria-hidden="true">
-            <div class="modal-dialog" id="updateDialog">
-                <div id="modal-content" class="modal-content">
-                    <div class="modal-body">
-                        Loading..
-                    </div>
-                </div>
-            </div>
-        </div>
     @endif
-@endsection
-
-
-@section('js')
-    <script>
-        $('#detailData').on('shown.bs.modal', function(e) {
-            var html = `
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Edit Data Karyawaan</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <table class="table">
-                    <tr>
-                        <td>NO CUTI</td>
-                        <td>${$(e.relatedTarget).data('no_cuti')}</td>
-                    </tr>
-                    <tr>
-                        <td>NPP</td>
-                        <td>${$(e.relatedTarget).data('npp')}</td>
-                    </tr>
-                    <tr>
-                        <td>NAMA PEMOHON</td>
-                        <td>${$(e.relatedTarget).data('nama_pemohon')}</td>
-                    </tr>
-                    <tr>
-                        <td>TANGGAL PENGAJUAN</td>
-                        <td>${$(e.relatedTarget).data('tgl_pengajuan')}</td>
-                    </tr>
-                    <tr>
-                        <td>TANGGAL MULAI</td>
-                        <td>${$(e.relatedTarget).data('tgl_bayar')}</td>
-                    </tr>
-                    <tr>
-                        <td>TANGGAL AKHIR</td>
-                        <td>${$(e.relatedTarget).data('tgl_bayar')}</td>
-                    </tr>
-                </table>
-            </div>
-            `;
-
-            $('#modal-content').html(html);
-            $('.dropify').dropify();
-
-        });
-    </script>
-
-    <script>
-        $('#rejectModal').on('shown.bs.modal', function(e) {
-            var html = `
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Edit Data Karyawaan</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="${$(e.relatedTarget).data('url')}" method="POST">
-                @csrf
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="phone" class="form-label">Keterangan</label>
-                        <textarea name="keterangan_reject" id="" cols="30" rows="10" class="form-control"></textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </form>
-            `;
-
-            $('#modal-reject').html(html);
-
-        });
-    </script>
 @endsection

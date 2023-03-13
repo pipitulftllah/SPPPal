@@ -3,6 +3,7 @@
 @section('content')
 
 <div class="content">
+<div class="container-fluid py-4">
                 <div class="card card-info card-outline">
 
                 <div class="card-body">

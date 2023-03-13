@@ -11,27 +11,29 @@ use App\Models\{Pembayaran};
 class PembayaranController extends Controller
 {
     public function index(){
-        $pembayaran = DB::select('select * from pembayaran');
+        $pembayaran = Pembayaran::all();
         return view('pembayaran',['pembayaran' => $pembayaran]);
     }
+
+    public function index1(){
+        $pembayaran = Pembayaran::all();
+        return view('history_pembayaran',['pembayaran' => $pembayaran]);
+    }
+
+
 
     public function laporan()
     {
         return view('laporan');
     }
-    
-    public function history_pembayaran(Request $request)
+
+    public function history_pembayaran(Request $request, $id)
     {
 
-        // dd(auth()->user());
-        if (auth()->user()->level == 'siswa') {
-            $data = Pembayaran::where('nisn',DB::table('siswa')->where('id_login',auth()->user()->id)->first()->nisn)->get();
+        $data = Pembayaran::where('id_pembayaran', $id)->get();
 
-        } {
-            $data = Pembayaran::get();
-
-        }
-    	return view('history_pembayaran',['pembayaran'=>$data]);
+        $pdf = PDF::loadview('history_pembayaran-pdf',['data'=> $data]);
+        return $pdf->stream();
     }
 
 
@@ -88,17 +90,57 @@ class PembayaranController extends Controller
     }
 
     public function cetakPdf($id)
-    {   $data = DB::table('pembayaran')->where('id_pembayaran', $id)->first();
-        
+    {
+
+        $data = Pembayaran::where('id_pembayaran', $id)->first();
+
         $pdf = PDF::loadview('pembayaran-pdf',['data'=> $data]);
         return $pdf->stream();
     }
 
     public function cetakPdf1($id)
     {   $data = DB::table('pembayaran')->where('id_pembayaran', $id)->first();
-        
+
         $pdf = PDF::loadview('history_pembayaran-pdf',['data'=> $data]);
         return $pdf->stream();
+    }
+
+    public function cetakPdf2($id)
+    {   $data = DB::table('pembayaran')->where('tgl_bayar', $id)->first();
+
+        $pdf = PDF::loadview('laporan_pembayaran-pdf',['data'=> $data]);
+        return $pdf->stream();
+    }
+
+    public function laporanPembayaran(Request $request)
+    {
+
+        if (isset($_GET['tgl_bayar'])) {
+            $data = Pembayaran::where('tgl_bayar',$_GET['tgl_bayar'])->get();
+
+        } else {
+            $data = Pembayaran::get();
+
+        }
+    	return view('laporan_pembayaran',['pembayaran'=>$data]);
+    }
+
+    public function cetakLaporanPdf(Request $request,$tgl_bayar)
+    {
+     
+        if ($tgl_bayar != 'all') {
+     
+            $data = Pembayaran::where('tgl_bayar',$tgl_bayar)->get();
+
+        } else {
+            $data = Pembayaran::get();
+
+        }
+
+
+        $pdf = PDF::loadview('laporan-pembayaran-pdf',['data'=> $data]);
+        return $pdf->stream();
+
     }
 
 }

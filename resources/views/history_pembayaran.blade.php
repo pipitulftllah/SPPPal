@@ -60,7 +60,7 @@
                             
                             
                             <td>
-                            <a href="{{ route('pembayaran.cetak-pdf', ['id' => $get->id_pembayaran]) }}"
+                            <a href="{{ route('pembayaran.history', ['id' => $get->id_pembayaran]) }}"
                                                     target="_blank" class="btn btn-warning">Cetak</a>
                                </td>
                         </tr>

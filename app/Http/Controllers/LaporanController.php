@@ -24,8 +24,8 @@ class LaporanController extends Controller
 
     public function cetakPdf(Request $request)
     {
-        $data = DB::table('pembayaran')->where('tgl_awal', '>=', $request->tgl_mulai)->where('tgl_akhir', '<=', $request->tgl_akhir)->get();
-        $pdf = PDF::loadView('laporan-pembayaran-pdf', ['data' => $data,'method'=>'POST','tgl_mulai'=>$request->tgl_mulai,'tgl_akhir'=>$request->tgl_akhir]);
+        $data = DB::table('pembayaran')->where('tgl_bayar', '<=', $request->tgl_bayar)->get();
+        $pdf = PDF::loadView('laporan-pembayaran-pdf', ['data' => $data,'method'=>'POST','tgl_bayar'=>$request->tgl_bayar]);
         return $pdf->download('laporan-pembayaran.pdf');
     }
 }

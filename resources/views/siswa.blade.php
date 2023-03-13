@@ -5,7 +5,8 @@
 
 <br>
 
-<a href="/siswa/create"class="btn btn-success">+ Tambah Data</a>
+<div class="container-fluid py-4">
+<a href="/siswa/create"class="btn btn-success">+ Tambah Data Siswa</a>
 <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
@@ -21,11 +22,11 @@
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">nisn</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">nis</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">nama</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id_kelas</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id kelas</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">alamat</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">no_telp</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id_spp</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id_login</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">no telp</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id spp</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id login</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">aksi</th>
                     </tr>
                   </thead>

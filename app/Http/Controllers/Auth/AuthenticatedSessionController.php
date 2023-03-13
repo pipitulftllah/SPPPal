@@ -32,14 +32,14 @@ class AuthenticatedSessionController extends Controller
         // dd('adaaa');
         if (Auth::user()->level == 'admin') {
             
-        return redirect()->intended('/');
+        return redirect()->intended('/dashboard-admin');
         }
         else if(Auth::user()->level == 'petugas'){
             
-        return redirect()->intended('/');
+        return redirect()->intended('/dashboard-petugas');
         } else {
             
-        return redirect()->intended('/pembayaran/history_pembayaran');
+        return redirect()->intended('/dashboard-siswa');
         
         }
     }

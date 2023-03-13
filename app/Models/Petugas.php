@@ -1,34 +1,33 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
 
-class Petugas extends CI_Model
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Petugas extends Model
 {
-    public function get_kelas($id)
+    use HasFactory;
+
+    protected $table = 'petugas';
+
+    protected $primarykey = 'id';
+
+    protected $fillable = [
+        'id_users',
+        'name',
+        'alamat',
+        'no_telp',
+        'created_at',
+        'updated_at'
+    ];
+    public function pembayaran()
     {
-        $this->db->select('*');
-        $this->db->from('petugas');
-        $this->db->where('id', $id);
-        $this->db->join('kelas', 'kelas.id_kelas=kelas.id_kelas');
-        $query = $this->db->get_where()->row_array();
-        return $query;
+        return $this->hasMany('App\Models\Pembayaran', 'id_siswa', 'id');
     }
 
-    public function get_all()
+    public function users()
     {
-        $this->db->select('*');
-        $this->db->from('petugas');
-        $this->db->where('level', 'Murid');
-        $this->db->join('kelas', 'kelas.id_kelas=kelas.id_kelas');
-        $query = $this->db->get()->result_array();
-        return $query;
-    }
-
-    public function get_petugas()
-    {
-        $this->db->select('*');
-        $this->db->from('petugas');
-        $this->db->where('level', 'Admin');
-        $query = $this->db->get()->result_array();
-        return $query;
+        return $this->belongsTo('App\Models\User', 'id_users', 'id');
     }
 }

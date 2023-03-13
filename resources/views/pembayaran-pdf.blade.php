@@ -33,22 +33,40 @@
     <table class='table table-bordered'>
         <thead>
             <tr>
-                <th>ID Pembayaran</th>
+                <th>No</th>
                 <th>NISN</th>
                 <th>Tanggal Bayar</th>
                 <th>Bulan Dibayar</th>
                 <th>Tahun Dibayar</th>
+                <th>ID Spp</th>
                 <th>Jumlah Bayar</th>
             </tr>
         </thead>
         <tbody>
     <tr>
-        <td>{{$data->id_pembayaran}}</td>
-        <td>{{$data->nisn}}</td>
-        <td>{{$data->tgl_bayar}}</td>
-        <td>{{$data->bulan_dibayar}}</td>
-        <td>{{$data->tahun_dibayar}}</td>
-        <td>{{$data->jumlah_bayar}}</td>
+                           <td class="align-middle text-center text-sm">
+                                <span class="text-sm font-weight-bold mb-0">{{ $data->id_pembayaran }}</span>
+                            </td>
+                            <td class="align-middle text-center text-sm">
+                                <span class="text-sm font-weight-bold mb-0">{{ $data->nisn }}</span>
+                            </td>
+                            <td class="align-middle text-center text-sm">
+                                <span class="text-sm font-weight-bold mb-0">{{ $data->tgl_bayar }}</span>
+                            </td>
+                            <td class="align-middle text-center text-sm">
+                                <span class="text-sm font-weight-bold mb-0">{{ $data->bulan_dibayar }}</span>
+                            </td>
+                            <td class="align-middle text-center text-sm">
+                                <span class="text-sm font-weight-bold mb-0">{{ $data->tahun_dibayar }}</span>
+                            </td>
+                            <td class="align-middle text-center text-sm">
+                                <span class="text-sm font-weight-bold mb-0">{{ $data->id_spp }}</span>
+                            </td>
+                            <td class="align-middle text-center text-sm">
+                                <span class="text-sm font-weight-bold mb-0">{{ $data->jumlah_bayar }}</span>
+                            </td>
+                            
+                            
     </tr>
     
     </tbody>

@@ -5,7 +5,8 @@
 
 <br>
 
-<a href="/petugas/create"class="btn btn-success">+ Tambah Data</a>
+<div class="container-fluid py-4">
+<a href="/petugas/create"class="btn btn-success">+ Tambah Petugas</a>
 <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
@@ -18,9 +19,10 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id_petugas</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id petugas</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">username</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">nama_petugas</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">nama petugas</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id login</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">level</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">aksi</th>
                     </tr>
@@ -37,6 +39,9 @@
                             </td>
                             <td class="align-middle text-center text-sm">
                                 <span class="text-sm font-weight-bold mb-0">{{ $get->nama_petugas }}</span>
+                            </td>
+                            <td class="align-middle text-center text-sm">
+                                <span class="text-sm font-weight-bold mb-0">{{ $get->id_login }}</span>
                             </td>
                             <td class="align-middle text-center text-sm">
                                 <span class="text-sm font-weight-bold mb-0">{{ $get->level }}</span>

@@ -3,6 +3,7 @@
 @section('content')
 
 <div class="content">
+<div class="container-fluid py-4">
                 <div class="card card-info card-outline">
 
                 <div class="card-body">
@@ -25,7 +26,6 @@
                             <input type="text" id="nama" name="nominal" class="form-control" placeholder="nominal">
 
                         </div>
-
                         <button type="submit" class="btn btn-success">Tambah</button>
                         </div>
                         </div>

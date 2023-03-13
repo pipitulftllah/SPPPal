@@ -24,7 +24,9 @@ class PetugasController extends Controller
         DB::table('petugas')->insert([
             'id_petugas' => $request->id_petugas,
             'username' => $request->username,
+            'password' => $request->password,
             'nama_petugas' => $request->nama_petugas,
+            'id_login' => $request->id_login,
             'level' => $request->level,
         ]);
         return redirect('/petugas');
@@ -45,7 +47,9 @@ class PetugasController extends Controller
         // dd($request->all());
         DB::table('petugas')->where('id_petugas' , $id)->update([
             'username' => $request->username,
+            'password' => $request->password,
             'nama_petugas' => $request->nama_petugas,
+            'id_login' => $request->id_login,
             'level' => $request->level,
         ]);
         return redirect('/petugas');
